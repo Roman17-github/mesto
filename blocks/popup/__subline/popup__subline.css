@@ -1,0 +1,11 @@
+.popup__subline {
+    margin-bottom: 48px;
+    width: 358px;
+    height: 27px;
+}
+@media screen and (max-width:767px) {
+    .popup__subline {
+        width:238px;
+        
+    }
+}
