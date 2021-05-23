@@ -9,19 +9,23 @@ let inputName = document.querySelector('[name="form-name"]');
 let inputSubline = document.querySelector('[name="form-subline"]');
 
 
-function togglePopup() {
-    popup.classList.toggle('popup_opened');
+function openForm() {
+    popup.classList.add('popup_opened');
     inputName.value = profileName.textContent;
     inputSubline.value = profileSubline.textContent;
+};
+
+function closeForm() {
+    popup.classList.remove('popup_opened');
 };
 
 function editProfile(evt) {
     evt.preventDefault();
     profileName.textContent = inputName.value;
     profileSubline.textContent = inputSubline.value;
-    togglePopup();
+    closeForm();
 };
 
-openPopup.addEventListener('click', togglePopup);
-closePopup.addEventListener('click', togglePopup);
+openPopup.addEventListener('click', openForm);
+closePopup.addEventListener('click', closeForm);
 editSave.addEventListener('submit', editProfile);
