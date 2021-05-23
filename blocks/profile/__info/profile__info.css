@@ -1,9 +1,10 @@
 .profile__info {
     width: 336px;
     min-height: 73px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
     position: relative;
+    grid-template-columns: repeat(2,max-content);
+    gap:16px 18px;
 }
 @media screen and (max-width:767px) {
     .profile__info {
