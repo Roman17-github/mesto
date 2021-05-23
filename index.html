@@ -15,11 +15,10 @@
         <img src="./images/Kusto.jpg" alt="аватар" class="profile__avatar" />
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button  class="profile__edit"></button>
+          <button class="profile__edit"></button>
           <p class="profile__subline">Исследователь океана</p>
-          
         </div>
-        <button  class="profile__add-button"></button>
+        <button class="profile__add-button"></button>
       </section>
       <section class="elements">
         <div class="element">
@@ -97,8 +96,18 @@
       <div class="popup__container">
         <form name="form">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input name="Name" type="text" placeholder="ваше имя" class="popup__input" />
-          <input name="Subline" type="text" placeholder="род занятий" class="popup__input" />
+          <input
+            name="form-name"
+            type="text"
+            placeholder="ваше имя"
+            class="popup__input"
+          />
+          <input
+            name="form-subline"
+            type="text"
+            placeholder="род занятий"
+            class="popup__input"
+          />
           <button type="submit" class="popup__submit">Сохранить</button>
         </form>
         <button type="button" class="popup__close"></button>

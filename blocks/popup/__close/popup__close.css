@@ -4,13 +4,15 @@
     position: absolute;
     top:-48px;
     right: -48px;
-    background-color: black;
-    background-image: url(../../../images/Close\ Icon.png);
+    background-color:rgba(0,0,0,0);
+    background-image: url(../../../images/Close-Icon.svg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:cover;
     border: 0;
     cursor: pointer;
     padding: 0;
+    transform: rotate(45deg);
+
 }
 .popup__close:hover {
     opacity: 0.6;

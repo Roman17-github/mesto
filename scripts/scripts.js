@@ -5,13 +5,14 @@ const profileInfo = document.querySelector('.profile-info');
 const editSave = document.querySelector('[name="form"]');
 let profileName = document.querySelector('.profile__name');
 let profileSubline = document.querySelector('.profile__subline')
-let inputName = document.querySelector('[name="Name"]');
-let inputSubline = document.querySelector('[name="Subline"]');
-inputName.value = profileName.textContent;
-inputSubline.value = profileSubline.textContent;
+let inputName = document.querySelector('[name="form-name"]');
+let inputSubline = document.querySelector('[name="form-subline"]');
+
 
 function togglePopup() {
     popup.classList.toggle('popup_opened');
+    inputName.value = profileName.textContent;
+    inputSubline.value = profileSubline.textContent;
 };
 
 function editProfile(evt) {
