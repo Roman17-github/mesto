@@ -20,97 +20,78 @@
         </div>
         <button type="button" class="profile__add-button"></button>
       </section>
-      <section class="elements">
-        <div class="element">
-          <img
-            src="./images/elements/kirill-pershin-1088404-unsplash(1).jpg"
-            alt="картинка"
-            class="element__image"
-          />
-          <div class="element__bottom">
-            <p class="element__name">Карачевск</p>
-            <button type="button" class="element__like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img
-            src="./images/elements/kirill-pershin-1404681-unsplash.jpg"
-            alt="картинка"
-            class="element__image"
-          />
-          <div class="element__bottom">
-            <p class="element__name">Гора Эльбрус</p>
-            <button type="button" class="element__like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img
-            src="./images/elements/kirill-pershin-1556355-unsplash.jpg"
-            alt="картинка"
-            class="element__image"
-          />
-          <div class="element__bottom">
-            <p class="element__name">Домбай</p>
-            <button type="button" class="element__like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img
-            src="./images/elements/kirill-pershin-1404681-unsplash.jpg"
-            alt="картинка"
-            class="element__image"
-          />
-          <div class="element__bottom">
-            <p class="element__name">Гора Эльбрус</p>
-            <button type="button" class="element__like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img
-            src="./images/elements/kirill-pershin-1556355-unsplash.jpg"
-            alt="картинка"
-            class="element__image"
-          />
-          <div class="element__bottom">
-            <p class="element__name">Домбай</p>
-            <button type="button" class="element__like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img
-            src="./images/elements/kirill-pershin-1088404-unsplash(1).jpg"
-            alt="картинка"
-            class="element__image"
-          />
-          <div class="element__bottom">
-            <p class="element__name">Карачаево-Черкессия</p>
-            <button type="button" class="element__like"></button>
-          </div>
-        </div>
-      </section>
+
+      <section class="elements"></section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
-    <div class="popup">
-      <div class="popup__container">
-        <form name="form">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <input
-            name="form-name"
-            type="text"
-            placeholder="ваше имя"
-            class="popup__input"
-          />
-          <input
-            name="form-subline"
-            type="text"
-            placeholder="род занятий"
-            class="popup__input"
-          />
-          <button type="submit" class="popup__submit">Сохранить</button>
-        </form>
-        <button type="button" class="popup__close"></button>
+    <template id="template">
+      <div class="element">
+        <button type="button" class="element__delete"></button>
+        <img src="" alt="картинка" class="element__image" />
+        <div class="element__bottom">
+          <p class="element__name"></p>
+          <button type="button" class="element__like"></button>
+        </div>
+      </div>
+    </template>
+    <div class="popups">
+      <div class="popup">
+        <div class="popup__container">
+          <form name="form">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <input
+              name="form-name"
+              type="text"
+              placeholder="ваше имя"
+              class="popup__input"
+            />
+            <input
+              name="form-subline"
+              type="text"
+              placeholder="род занятий"
+              class="popup__input"
+            />
+            <button type="submit" class="popup__submit">Сохранить</button>
+          </form>
+          <button type="button" class="popup__close"></button>
+        </div>
+      </div>
+      <div class="popup popup_type_place">
+        <div class="popup__container">
+          <form name="form-place">
+            <h2 class="popup__title">Новое место</h2>
+            <input
+              name="place-name"
+              type="text"
+              placeholder="Название"
+              class="popup__input"
+            />
+            <input
+              name="place-subline"
+              type="text"
+              placeholder="Ссылка на картинку"
+              class="popup__input"
+            />
+            <button type="submit" class="popup__submit">Сохранить</button>
+          </form>
+          <button
+            type="button"
+            class="popup__close popup__close_type_place"
+          ></button>
+        </div>
+      </div>
+      <div class="popup popup_type_photo">
+        <div class="popup__container_type_photo">
+          <img src="" alt="картинка" class="popup__image_type_place" />
+          <p class="popup__name_type_photo"></p>
+          <button
+            type="button"
+            class="popup__close popup__close_type_photo"
+          ></button
+          >>
+        </div>
       </div>
     </div>
     <script src="scripts/scripts.js"></script>
