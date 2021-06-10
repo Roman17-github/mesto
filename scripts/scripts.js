@@ -131,8 +131,8 @@ function openPopupPhoto (element) {
   
   element.querySelector('.element__image').addEventListener('click', function  () {
     popupPhoto.classList.add('popup_opened');
-    popupPhoto.querySelector('.popup__image_type_place').src = element.querySelector('.element__image').src;
-    popupPhoto.querySelector('.popup__name_type_photo').textContent = element.querySelector('.element__name').textContent;
+    popupPhoto.querySelector('.popup__image').src = element.querySelector('.element__image').src;
+    popupPhoto.querySelector('.popup__photoName').textContent = element.querySelector('.element__name').textContent;
   });
   
 }
