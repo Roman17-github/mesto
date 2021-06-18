@@ -2,18 +2,23 @@ const openPopup = document.querySelector(".profile__edit");
 const popupEdit = document.querySelector(".popup_type_edit");
 const closePopup = document.querySelector(".popup__close");
 const profileInfo = document.querySelector(".profile-info");
-const editSave = document.querySelector('[name="form"]');
+const editSave = document.querySelector('[name="form-edit"]');
 const profileName = document.querySelector(".profile__name");
 const profileSubline = document.querySelector(".profile__subline");
 const inputName = document.querySelector('[name="form-name"]');
 const inputSubline = document.querySelector('[name="form-subline"]');
+const popup = document.querySelectorAll(".popup");
+
+
 
 function openForm(popup) {
   popup.classList.add("popup_opened");
+  
 }
 
 function closeForm(popup) {
   popup.classList.remove("popup_opened");
+  resetError ()
 }
 
 function editProfile(evt) {
@@ -25,8 +30,7 @@ function editProfile(evt) {
 
 const addPlace = document.querySelector(".popup_type_place");
 const openPlace = document.querySelector(".profile__add-button");
-const closePlace = document.querySelector(".popup__close_type_place");
-const savePlace = document.querySelector('[name="form-place"');
+const savePlace = document.querySelector('[name="form-place"]');
 const placeName = document.querySelector('[name="place-name"]');
 const placeSubline = document.querySelector('[name="place-subline"]');
 
@@ -119,17 +123,14 @@ openPopup.addEventListener("click", function () {
   openForm(popupEdit);
   inputName.value = profileName.textContent;
   inputSubline.value = profileSubline.textContent;
+  setSubmit(editSave);
+  
 });
-closePopup.addEventListener("click", function () {
-  closeForm(popupEdit);
-});
+
 editSave.addEventListener("submit", editProfile);
 
 openPlace.addEventListener("click", function () {
   openForm(addPlace);
-});
-closePlace.addEventListener("click", function () {
-  closeForm(addPlace);
 });
 
 savePlace.addEventListener("submit", function (evt) {
@@ -143,6 +144,22 @@ savePlace.addEventListener("submit", function (evt) {
   evt.target.reset();
 });
 
-closepopupPhoto.addEventListener("click", function () {
-  closeForm(popupPhoto);
+popup.forEach((popup) => {
+  popup.addEventListener("click", function (evt) {
+    const form = popup.querySelector('.form');
+    if(evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
+      closeForm(popup);
+      form.reset();
+    }
+  });
+})//функция закрытия всех попапов нажатием на крестик или оверлей
+
+document.addEventListener('keydown', function(evt) {
+  const openPopup = document.querySelector('.popup_opened');
+  if (evt.key === "Escape") {
+    closeForm(openPopup);
+  }
 });
+
+
+

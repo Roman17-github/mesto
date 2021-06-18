@@ -39,42 +39,62 @@
     <div class="popups">
       <div class="popup popup_type_edit">
         <div class="popup__container">
-          <form name="form">
+          <form name="form-edit" class="form"  novalidate>
             <h2 class="popup__title">Редактировать профиль</h2>
             <input
               name="form-name"
               type="text"
               placeholder="ваше имя"
-              class="popup__input"
+              class="popup__input "
+              id="name"
+              minlength="2"
+              maxlength="40"
+              required
             />
+            <span id="name-error" class="form__error"></span>
             <input
               name="form-subline"
               type="text"
               placeholder="род занятий"
               class="popup__input"
+              id="subline"
+              minlength="2"
+              maxlength="200"
+              required
             />
-            <button type="submit" class="popup__submit">Сохранить</button>
+            <span id="subline-error" class="form__error"></span>
+            <button type="submit" class="popup__submit popup__submit_disabled" disabled>Сохранить</button>
           </form>
           <button type="button" class="popup__close"></button>
         </div>
       </div>
       <div class="popup popup_type_place">
         <div class="popup__container">
-          <form name="form-place">
+          <form name="form-place" class="form" novalidate>
             <h2 class="popup__title">Новое место</h2>
             <input
               name="place-name"
               type="text"
               placeholder="Название"
               class="popup__input"
+              id="place"
+              minlength="2"
+              maxlength="40"
+              required
             />
+            <span id="place-error" class="form__error"></span>
             <input
               name="place-subline"
               type="url"
               placeholder="Ссылка на картинку"
               class="popup__input"
+              id="link"
+              minlength="2"
+              maxlength="200"
+              required
             />
-            <button type="submit" class="popup__submit">Сохранить</button>
+            <span id="link-error" class="form__error"></span>
+            <button type="submit" class="popup__submit popup__submit_disabled" disabled>Сохранить</button>
           </form>
           <button
             type="button"
@@ -95,5 +115,6 @@
       </div>
     </div>
     <script src="scripts/scripts.js"></script>
+    <script src="scripts/validation.js"></script>
   </body>
 </html>
