@@ -1,4 +1,4 @@
-const openPopup = document.querySelector(".profile__edit");
+const buttonOpenPopupProfile = document.querySelector(".profile__edit");
 const popupEdit = document.querySelector(".popup_type_edit");
 const closePopup = document.querySelector(".popup__close");
 const profileInfo = document.querySelector(".profile-info");
@@ -7,18 +7,31 @@ const profileName = document.querySelector(".profile__name");
 const profileSubline = document.querySelector(".profile__subline");
 const inputName = document.querySelector('[name="form-name"]');
 const inputSubline = document.querySelector('[name="form-subline"]');
-const popup = document.querySelectorAll(".popup");
+const popups = document.querySelectorAll(".popup");
 
 
 
 function openForm(popup) {
   popup.classList.add("popup_opened");
-  
+  document.addEventListener('keydown', closeEscPopup);
 }
 
+
 function closeForm(popup) {
+  if (popup.classList.contains('popup_type_place' || 'popup_type_edit')) {
+    const form = popup.querySelector('.form');
+    form.reset();
+    resetError ();
+  }
   popup.classList.remove("popup_opened");
-  resetError ()
+  document.removeEventListener('keydown', closeEscPopup);
+}
+
+function closeEscPopup(evt) {
+  if (evt.key === "Escape") {
+    const openPopup = document.querySelector('.popup_opened');
+    closeForm(openPopup);
+  }
 }
 
 function editProfile(evt) {
@@ -119,7 +132,7 @@ function openPopupPhoto(element) {
 
 renderElements();
 
-openPopup.addEventListener("click", function () {
+buttonOpenPopupProfile.addEventListener("click", function () {
   openForm(popupEdit);
   inputName.value = profileName.textContent;
   inputSubline.value = profileSubline.textContent;
@@ -144,22 +157,16 @@ savePlace.addEventListener("submit", function (evt) {
   evt.target.reset();
 });
 
-popup.forEach((popup) => {
-  popup.addEventListener("click", function (evt) {
-    const form = popup.querySelector('.form');
+popups.forEach((popup) => {
+  popup.addEventListener("click", function (evt) { 
     if(evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
       closeForm(popup);
-      form.reset();
     }
   });
 })//функция закрытия всех попапов нажатием на крестик или оверлей
 
-document.addEventListener('keydown', function(evt) {
-  const openPopup = document.querySelector('.popup_opened');
-  if (evt.key === "Escape") {
-    closeForm(openPopup);
-  }
-});
+
+
 
 
 
