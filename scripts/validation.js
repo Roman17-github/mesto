@@ -17,7 +17,7 @@ function enableValidition (config) {
     const form = evt.currentTarget;
 
     setFieldError(input,config);
-    setSubmit(form);
+    setSubmit(form,config);
   }
   
   function setFieldError(input,config) {
@@ -46,10 +46,10 @@ function enableValidition (config) {
     }
   }
   
-  function resetError () {
-   
-   const span = document.querySelectorAll(config.inputTextError);
-   const input = document.querySelectorAll(config.inputSelector);
+  function resetValidation (form) {
+   const button = form.querySelectorAll(config.submitButton);
+   const span = form.querySelectorAll(config.inputTextError);
+   const input = form.querySelectorAll(config.inputSelector);
    span.forEach((span) => {
     span.textContent = "";
    })
@@ -57,6 +57,12 @@ function enableValidition (config) {
    input.forEach((input) => {
     input.classList.remove(config.inputError);
    })
+
+   button.forEach((button) => {
+    button.classList.add(config.inactiveButtonClass);
+    button.setAttribute('disabled', 'disabled');
+   })
+   
   }//функция очистки ошибок
   
   const config = {
@@ -67,5 +73,6 @@ function enableValidition (config) {
     inactiveButtonClass:'popup__submit_disabled',
     inputTextError:'.form__error'
   }
+  
   enableValidition (config);
   

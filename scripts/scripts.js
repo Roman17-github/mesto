@@ -9,19 +9,16 @@ const inputName = document.querySelector('[name="form-name"]');
 const inputSubline = document.querySelector('[name="form-subline"]');
 const popups = document.querySelectorAll(".popup");
 
-
-
 function openForm(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener('keydown', closeEscPopup);
+  resetValidation(popup);
 }
-
 
 function closeForm(popup) {
   if (popup.classList.contains('popup_type_place' || 'popup_type_edit')) {
     const form = popup.querySelector('.form');
     form.reset();
-    resetError ();
   }
   popup.classList.remove("popup_opened");
   document.removeEventListener('keydown', closeEscPopup);
@@ -78,7 +75,6 @@ const elements = document.querySelector(".elements");
 const itemTemplate = document.querySelector("#template").content;
 const htmlElement = itemTemplate.cloneNode(true);
 const popupPhoto = document.querySelector(".popup_type_photo");
-const closepopupPhoto = popupPhoto.querySelector(".popup__close_type_photo");
 
 function renderElements() {
   initialCards.forEach(addCard);
@@ -136,7 +132,7 @@ buttonOpenPopupProfile.addEventListener("click", function () {
   openForm(popupEdit);
   inputName.value = profileName.textContent;
   inputSubline.value = profileSubline.textContent;
-  setSubmit(editSave);
+  resetValidation(popupEdit);
   
 });
 
@@ -154,7 +150,7 @@ savePlace.addEventListener("submit", function (evt) {
   };
   addCard(newCard);
   closeForm(addPlace);
-  setSubmit(savePlace);
+  resetValidation(savePlace);
   evt.target.reset();
 });
 
