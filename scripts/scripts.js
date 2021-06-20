@@ -154,6 +154,7 @@ savePlace.addEventListener("submit", function (evt) {
   };
   addCard(newCard);
   closeForm(addPlace);
+  setSubmit(savePlace);
   evt.target.reset();
 });
 
