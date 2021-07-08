@@ -1,65 +1,63 @@
-
 export default class FormValidator {
-    constructor(config,formElement) {
-        this._formElement = formElement;
-        this._inputSelector = config.inputSelector;
-        this._inputError = config.inputError;
-        this._submitButton = config.submitButton;
-        this._inactiveButtonClass = config.inactiveButtonClass;
-        this._inputTextError = config.inputTextError;
+  constructor(config, formElement) {
+    this._formElement = formElement;
+    this._inputSelector = config.inputSelector;
+    this._inputClassError = config.inputClassError;
+    this._inactiveButtonClass = config.inactiveButtonClass;
+    this._inputTextError = config.inputTextError;
+    this._submitButton = this._formElement.querySelector(config.submitButton);
+  }
 
-    }
-    enableValidition () {
-      this._resetValidation(this._formElement);
-      this._formElement.addEventListener('input',(evt) => this._handelFormInput(evt));
-    }
-      _handelFormInput (evt) {
-        const input = evt.target;
-        const form = evt.currentTarget;
-        
-        this._setFieldError(input);
-        this._setSubmit(form);
-      }
+  enableValidition() {
+    this._formElement.addEventListener("input", (evt) =>
+      this._handelFormInput(evt)
+    );
+  }
 
-      _setFieldError(input) {
-        const span = document.querySelector(`#${input.id}-error`);
-        const valid = input.validity.valid;
-        if (!valid) {
-          input.classList.add(this._inputError );
-          span.textContent = input.validationMessage;
-          
-        }else {
-          input.classList.remove(this._inputError );
-          span.textContent = ""
-        }
-      }
+  _handelFormInput(evt) {
+    const input = evt.target;
+    const form = evt.currentTarget;
 
-      _setSubmit(form) {
-        const button = form.querySelector(this._submitButton);
-        const isValid = form.checkValidity();
+    this._setFieldError(input);
+    this._toggleButtonSubmit(form);
+  }
 
-       if (isValid) {
-         button.classList.remove(this._inactiveButtonClass);
-         button.removeAttribute('disabled');
-       }else {
-         button.classList.add(this._inactiveButtonClass);
-         button.setAttribute('disabled', 'disabled');
+  _setFieldError(input) {
+    const span = document.querySelector(`#${input.id}-error`);
+    const valid = input.validity.valid;
+    if (!valid) {
+      input.classList.add(this._inputClassError);
+      span.textContent = input.validationMessage;
+    } else {
+      input.classList.remove(this._inputClassError);
+      span.textContent = "";
     }
   }
 
-      _resetValidation (form) {
-    const button = form.querySelector(this._submitButton);
-    const span = form.querySelectorAll(this._inputTextError);
-    const input = form.querySelectorAll(this._inputSelector);
+  _inactiveButtonSubmit() {
+    this._submitButton.classList.add(this._inactiveButtonClass);
+    this._submitButton.setAttribute("disabled", "disabled");
+  }
+
+  _toggleButtonSubmit(form) {
+    const isValid = form.checkValidity();
+    if (isValid) {
+      this._submitButton.classList.remove(this._inactiveButtonClass);
+      this._submitButton.removeAttribute("disabled");
+    } else {
+      this._inactiveButtonSubmit();
+    }
+  }
+
+  resetValidation() {
+    const span = this._formElement.querySelectorAll(this._inputTextError);
+    const input = this._formElement.querySelectorAll(this._inputSelector);
     span.forEach((span) => {
-     span.textContent = "";
-    })
-   
+      span.textContent = "";
+    });
     input.forEach((input) => {
-     input.classList.remove(this._inputError);
-    })
- 
-     button.classList.add(this._inactiveButtonClass);
-     button.setAttribute('disabled', 'disabled');
-   }//функция очистки ошибок
+      input.classList.remove(this._inputClassError);
+    });
+    this._inactiveButtonSubmit();
+  } //функция очистки ошибок
 }
