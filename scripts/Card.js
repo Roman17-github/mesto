@@ -1,5 +1,6 @@
-const popupImage = document.querySelector(".popup__image");
 const popupPhoto = document.querySelector(".popup_type_photo");
+const popupImage = popupPhoto.querySelector(".popup__image");
+const PopupPhotoName = popupPhoto.querySelector(".popup__photoName");
 
 import { openPopup } from "./index.js";
 
@@ -8,15 +9,16 @@ export default class Card {
     this._text = data.name;
     this._link = data.link;
     this._cardTemplate = cardTemplate;
-  }
-
-  createCard() {
     this._cardElement = this._cardTemplate
       .querySelector(".element")
       .cloneNode(true);
+    this._cardImage = this._cardElement.querySelector(".element__image");
+  }
+
+  createCard() {
     this._cardElement.querySelector(".element__name").textContent = this._text;
-    this._cardElement.querySelector(".element__image").alt = this._text;
-    this._cardElement.querySelector(".element__image").src = this._link;
+    this._cardImage.alt = this._text;
+    this._cardImage.src = this._link;
     this._setEventListeners();
     return this._cardElement;
   }
@@ -24,6 +26,7 @@ export default class Card {
   _openPopupPhoto() {
     popupImage.src = this._link;
     popupImage.alt = this._text;
+    PopupPhotoName.textContent = this._text;
     openPopup(popupPhoto);
   }
 

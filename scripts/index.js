@@ -88,7 +88,6 @@ formPopupPlace.addEventListener("submit", function (evt) {
   };
   addCard(newCard, itemTemplate);
   closePopup(popupPlace);
-  evt.target.reset();
 });
 
 popups.forEach((popup) => {
