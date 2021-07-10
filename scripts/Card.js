@@ -1,6 +1,6 @@
 const popupPhoto = document.querySelector(".popup_type_photo");
 const popupImage = popupPhoto.querySelector(".popup__image");
-const PopupPhotoName = popupPhoto.querySelector(".popup__photoName");
+const popupPhotoName = popupPhoto.querySelector(".popup__photoName");
 
 import { openPopup } from "./index.js";
 
@@ -26,7 +26,7 @@ export default class Card {
   _openPopupPhoto() {
     popupImage.src = this._link;
     popupImage.alt = this._text;
-    PopupPhotoName.textContent = this._text;
+    popupPhotoName.textContent = this._text;
     openPopup(popupPhoto);
   }
 

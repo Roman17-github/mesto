@@ -27,8 +27,8 @@ const inputPlaceLink = document.querySelector('[name="place-subline"]');
 const itemTemplate = document.querySelector("#template").content;
 const elements = document.querySelector(".elements");
 
-const FormValidatorEdit = new FormValidator(config, editFormProfile);
-const FormValidatorPlace = new FormValidator(config, formPopupPlace);
+const formValidatorEdit = new FormValidator(config, editFormProfile);
+const formValidatorPlace = new FormValidator(config, formPopupPlace);
 
 export function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -67,7 +67,7 @@ function renderElements() {
 
 buttonOpenPopupProfile.addEventListener("click", function () {
   openPopup(popupEdit);
-  FormValidatorEdit.resetValidation();
+  formValidatorEdit.resetValidation();
   inputProfileName.value = profileName.textContent;
   inputProfileSubline.value = profileSubline.textContent;
 });
@@ -77,7 +77,7 @@ editFormProfile.addEventListener("submit", editProfile);
 buttonOpenPopupPlace.addEventListener("click", function () {
   openPopup(popupPlace);
   formPopupPlace.reset();
-  FormValidatorPlace.resetValidation();
+  formValidatorPlace.resetValidation();
 });
 
 formPopupPlace.addEventListener("submit", function (evt) {
@@ -102,5 +102,5 @@ popups.forEach((popup) => {
 }); //функция закрытия всех попапов нажатием на крестик или оверлей
 
 renderElements();
-FormValidatorEdit.enableValidition();
-FormValidatorPlace.enableValidition();
+formValidatorEdit.enableValidition();
+formValidatorPlace.enableValidition();
