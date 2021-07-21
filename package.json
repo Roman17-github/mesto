@@ -1,0 +1,24 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "* Сайт-проект сделан для размещения фотографий мест в которых побывал и подписей к ним,можно редактировать профиль с помощью новых изученных функций Javascript,сайт адаптивный,используются Gread для построения сеток и фотогалерей,Calc для создания \"резиновости\" сайта\r * https://roman17-github.github.io/mesto/",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Roman17-github/mesto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Roman17-github/mesto/issues"
+  },
+  "homepage": "https://github.com/Roman17-github/mesto#readme",
+  "devDependencies": {
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.7.2"
+  }
+}
