@@ -1,54 +1,47 @@
-import * as constants from "../scripts/constants.js";
-import Card from "../scripts/Card.js";
-import FormValidator from "../scripts/FormValidator.js";
-import Section from "../scripts/Section.js";
-import PopupWithForm from "../scripts/PopupWithForm.js";
-import UserInfo from "../scripts/UserInfo.js";
-import PopupWithImage from "../scripts/PopupWithImage.js";
-import '../pages/index.css';
+import * as constants from "../utils/constants.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import "./index.css";
 
 const formValidatorEdit = new FormValidator(
   constants.config,
   constants.editFormProfile
 );
+
 const formValidatorPlace = new FormValidator(
   constants.config,
   constants.formPopupPlace
 );
-const PopupPhoto = new PopupWithImage(constants.popupPhoto);
+
+const PopupPhoto = new PopupWithImage(".popup_type_photo");
+
 const cardList = new Section(
   {
     data: constants.initialCards,
     renderer: (item) => {
-      const card = new Card(
-        {
-          item,
-          handleCardClick: () => {
-            PopupPhoto.open(item);
-          },
-        },
-        constants.itemTemplate
-      ).createCard();
-      cardList.addItem(card);
+      newCard(item);
+      cardList.addItem(newCard(item));
     },
   },
   constants.elements
 );
 
+function newCard(item) {
+  const card = new Card({ item }, "#template", () => {
+    PopupPhoto.open(item);
+  });
+  return card.createCard();
+}
+
 const formPlace = new PopupWithForm({
-  popupSelector: constants.popupPlace,
+  popupSelector: ".popup_type_place",
   submitForm: (item) => {
-    const card = new Card(
-      {
-        item,
-        handleCardClick: () => {
-          PopupPhoto.open(item);
-          PopupPhoto.setEventListeners();
-        },
-      },
-      constants.itemTemplate
-    ).createCard();
-    cardList.addItem(card);
+    newCard(item);
+    cardList.addItem(newCard(item));
   },
 });
 
@@ -58,7 +51,7 @@ const userInfo = new UserInfo({
 });
 
 const formProfile = new PopupWithForm({
-  popupSelector: constants.popupEdit,
+  popupSelector: ".popup_type_edit",
   submitForm: (input) => {
     userInfo.setUserInfo(input);
   },

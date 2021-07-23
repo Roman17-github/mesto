@@ -34,11 +34,9 @@ export const initialCards = [
     inputTextError: ".form__error",
   };
 
-  export const popupEdit = document.querySelector(".popup_type_edit");
-  export const popupPlace = document.querySelector(".popup_type_place");
+  
   export const buttonOpenPopupPlace = document.querySelector(".profile__add-button");
   export const formPopupPlace = document.querySelector('[name="form-place"]');
-  export const itemTemplate = document.querySelector("#template").content;
   export const elements = document.querySelector(".elements");
   export const popupPhoto = document.querySelector(".popup_type_photo");
   export const buttonOpenPopupProfile = document.querySelector(".profile__edit");
