@@ -115,7 +115,7 @@ const formPlace = new PopupWithForm({
 const userInfo = new UserInfo({
   userNameSelector: "profile__name",
   userSublineSelector: "profile__subline",
-  UserAvatarSelector: "profile__avatar_image",
+  UserAvatarSelector: "profile__image",
 });
 
 const formProfile = new PopupWithForm({

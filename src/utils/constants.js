@@ -18,5 +18,5 @@
   export const inputProfileName = editFormProfile.querySelector('[name="name"]');
   export const inputProfileSubline = editFormProfile.querySelector('[name="about"]');
   export const formPopupAvatar = document.querySelector('[name="form-avatar"]');
-  export const buttonOpenPopupAvatar = document.querySelector(".profile__avatar_icon");
+  export const buttonOpenPopupAvatar = document.querySelector(".profile__icon");
   

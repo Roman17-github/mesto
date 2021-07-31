@@ -35,7 +35,7 @@
 @import url(../blocks/popup/__input/_error/popup__input_error.css);
 @import url(../blocks/popup/__submit/_disabled/popup__submit_disabled.css);
 @import url(../blocks/element/__like-count/element__like-count.css);
-@import url(../blocks/profile/__avatar/_icon/profile__avatar_icon.css);
-@import url(../blocks/profile/__avatar/_image/profile__avatar_image.css);
 @import url(../blocks/popup/__title/_delete/popup__title_delete.css);
 @import url(../blocks/popup/__submit/_delete/popup__submit_delete.css);
+@import url(../blocks/profile/__image/profile__image.css);
+@import url(../blocks/profile/__icon/profile__icon.css);

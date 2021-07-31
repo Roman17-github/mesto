@@ -4,7 +4,7 @@
     height: 120px;
     position: relative;
 }
-.profile__avatar:hover .profile__avatar_icon {
+.profile__avatar:hover .profile__icon {
     visibility: visible;
     cursor: pointer;
 }
