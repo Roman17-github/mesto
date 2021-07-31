@@ -7,11 +7,23 @@
   </head>
   <body class="body">
     <header class="header">
-      <img src="<%=require('./images/logo.svg')%>" alt="логотип" class="header__logo" />
+      <img
+        src="<%=require('./images/logo.svg')%>"
+        alt="логотип"
+        class="header__logo"
+      />
     </header>
     <main class="main">
       <section class="profile">
-        <img src="<%=require('./images/Kusto.jpg')%>" alt="аватар" class="profile__avatar" />
+        <div class="profile__avatar">
+          <img
+           src="https://st-gdefon.gallery.world/wallpapers_original/258554_gallery.world.jpg"
+           alt="аватар"
+           class="profile__avatar_image"
+         />
+         <div class="profile__avatar_icon"></div>
+        </div>
+        
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button type="button" class="profile__edit"></button>
@@ -21,7 +33,6 @@
       </section>
 
       <section class="elements"></section>
-      
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
@@ -29,17 +40,24 @@
     <template id="template">
       <div class="element">
         <button type="button" class="element__delete"></button>
-        <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg" alt="картинка" class="element__image" />
+        <img
+          src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg"
+          alt="картинка"
+          class="element__image"
+        />
         <div class="element__bottom">
           <p class="element__name"></p>
-          <button type="button" class="element__like"></button>
+          <div class="like-group">
+            <button type="button" class="element__like"></button>
+            <div class="element__like-count"></div>
+          </div>
         </div>
       </div>
     </template>
     <div class="popups">
       <div class="popup popup_type_edit">
         <div class="popup__container">
-          <form name="form-edit" class="form"  novalidate>
+          <form name="form-edit" class="form" novalidate>
             <h2 class="popup__title">Редактировать профиль</h2>
             <input
               name="name"
@@ -53,7 +71,7 @@
             />
             <span id="name-error" class="form__error"></span>
             <input
-              name="subline"
+              name="about"
               type="text"
               placeholder="род занятий"
               class="popup__input"
@@ -63,7 +81,13 @@
               required
             />
             <span id="subline-error" class="form__error"></span>
-            <button type="submit" class="popup__submit popup__submit_disabled" disabled>Сохранить</button>
+            <button
+              type="submit"
+              class="popup__submit popup__submit_disabled"
+              disabled
+            >
+              Сохранить
+            </button>
           </form>
           <button type="button" class="popup__close"></button>
         </div>
@@ -94,7 +118,13 @@
               required
             />
             <span id="link-error" class="form__error"></span>
-            <button type="submit" class="popup__submit popup__submit_disabled" disabled>Сохранить</button>
+            <button
+              type="submit"
+              class="popup__submit popup__submit_disabled"
+              disabled
+            >
+              Сохранить
+            </button>
           </form>
           <button
             type="button"
@@ -103,14 +133,58 @@
         </div>
       </div>
       <div class="popup popup_type_photo">
-        <div class=" popup__photoContainer">
-          <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg" alt="картинка" class="popup__image" />
+        <div class="popup__photoContainer">
+          <img
+            src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg"
+            alt="картинка"
+            class="popup__image"
+          />
           <p class="popup__photoName"></p>
           <button
             type="button"
             class="popup__close popup__close_type_photo"
-          ></button
-          >
+          ></button>
+        </div>
+      </div>
+      <div class="popup popup_type_delete">
+        <form  class="form">
+          <div class="popup__container">
+            <h2 class="popup__title popup__title_delete">Вы уверены?</h2>
+            <button type="submit" class="popup__submit popup__submit_delete">Да</button>
+            <button
+              type="button"
+              class="popup__close popup__close_type_delete"
+            ></button>
+          </div>
+        </form>
+      </div>
+      <div class="popup popup_type_avatar">
+        <div class="popup__container">
+          <form name="form-avatar" class="form" novalidate>
+            <h2 class="popup__title">Обновить аватар</h2>
+            <input
+              name="avatar"
+              type="url"
+              placeholder="Ссылка на картинку"
+              class="popup__input"
+              id="avatar"
+              minlength="2"
+              maxlength="200"
+              required
+            />
+            <span id="avatar-error" class="form__error"></span>
+            <button
+              type="submit"
+              class="popup__submit popup__submit_disabled"
+              disabled
+            >
+              Сохранить
+            </button>
+          </form>
+          <button
+            type="button"
+            class="popup__close popup__close_type_place"
+          ></button>
         </div>
       </div>
     </div>
