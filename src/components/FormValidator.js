@@ -23,7 +23,7 @@ export default class FormValidator {
   }
 
   _setFieldError(input) {
-    const span = document.querySelector(`#${input.id}-error`);
+    const span = this._formElement.querySelector(`#${input.id}-error`);
     const valid = input.validity.valid;
     if (!valid) {
       input.classList.add(this._inputClassError);
@@ -50,12 +50,12 @@ export default class FormValidator {
   }
 
   resetValidation() {
-    const span = this._formElement.querySelectorAll(this._inputTextError);
-    const input = this._formElement.querySelectorAll(this._inputSelector);
-    span.forEach((span) => {
+    const spans = this._formElement.querySelectorAll(this._inputTextError);
+    const inputs = this._formElement.querySelectorAll(this._inputSelector);
+    spans.forEach((span) => {
       span.textContent = "";
     });
-    input.forEach((input) => {
+    inputs.forEach((input) => {
       input.classList.remove(this._inputClassError);
     });
     this._inactiveButtonSubmit();
