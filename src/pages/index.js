@@ -57,13 +57,13 @@ const formPlace = new PopupWithForm({
       .addCard(item)
       .then((res) => {
         section.prependItem(newCard(res));
+        formPlace.close();
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
         formPlace.renderLoading(false);
-        formPlace.close();
       });
   },
 });
@@ -76,13 +76,13 @@ const formProfile = new PopupWithForm({
       .setUserInfo(input)
       .then((res) => {
         userInfo.setUserInfo(res);
+        formProfile.close();
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
         formProfile.renderLoading(false);
-        formProfile.close();
       });
   },
 });
@@ -95,13 +95,13 @@ const formAvatar = new PopupWithForm({
       .avatar(input)
       .then((res) => {
         userInfo.setUserAvatar(res);
+        formAvatar.close();
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
         formAvatar.renderLoading(false);
-        formAvatar.close();
       });
   },
 });
@@ -129,10 +129,15 @@ function newCard(item) {
     },
     () => {
       confirmationPopup.setSubmitAction(() => {
-        api.deleteCard(item._id).catch((err) => {
-          console.log(err);
-        });
-        card.removeCard();
+        api
+          .deleteCard(item._id)
+          .then(() => {
+            confirmationPopup.close();
+            card.removeCard();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       });
       confirmationPopup.open();
     },

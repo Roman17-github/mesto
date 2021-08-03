@@ -19,9 +19,7 @@ export default class Card {
     this._likeCount = this._cardElement.querySelector(".element__like-count");
     this._likes = item.likes;
     this._isDelete = item.owner._id === this._userId;
-    this.islikes = item.likes.some(
-      (item) => item._id === this._userId
-    );
+    this.islikes = item.likes.some((item) => item._id === this._userId);
     this.cardID = item._id;
     this._deleteButton = this._cardElement.querySelector(".element__delete");
   }
@@ -33,8 +31,6 @@ export default class Card {
       .cloneNode(true);
     return cardElement;
   }
-
-  
 
   createCard() {
     if (!this._isDelete) {
@@ -70,10 +66,9 @@ export default class Card {
   }
 
   _setEventListeners() {
-    
     this._cardImage.addEventListener("click", () => {
-        this._handleCardClick();
-      });
+      this._handleCardClick();
+    });
 
     this._cardElement
       .querySelector(".element__like")
